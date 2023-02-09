@@ -19,7 +19,7 @@ function sendQuery(dns_server)
 
     fetch(dns_query_url, {
       headers: {
-        'Accept': 'application/dns-message'
+        'Content-Type': 'application/dns-json'
       }
     }).then((response) => {
             // Check if the response is ok
@@ -30,7 +30,7 @@ function sendQuery(dns_server)
             }
             // Check if the response is in JSON format
             if (response.headers.get("Content-Type")
-                .includes("json")) {
+                .includes("application/dns-json")) {
                   console.log("response: ", response.json());
                   return response.json();
             } else {
