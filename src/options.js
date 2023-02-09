@@ -21,7 +21,7 @@ function saveOptions(e) {
       break;
   }
   
-  chrome.storage.local.set({
+  browser.storage.local.set({
     dns_url: document.querySelector("#dns-server-custom").value || dns_query_url
   });
 }
@@ -36,7 +36,7 @@ function restoreOptions() {
     console.log(`Error: ${error}`);
   }
 
-  var getting = chrome.storage.local.get("dns_url");
+  var getting = browser.storage.local.get("dns_url");
   getting.then(setCurrentChoice, onError);
 }
 
