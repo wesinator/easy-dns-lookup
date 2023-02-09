@@ -19,7 +19,7 @@ function sendQuery(dns_server)
 
     fetch(dns_query_url, {
       headers: {
-        'Content-Type': 'application/dns-json'
+        'Accept': 'application/dns-json'
       }
     }).then((response) => {
             // Check if the response is ok
