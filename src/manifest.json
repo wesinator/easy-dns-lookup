@@ -1,0 +1,19 @@
+{
+   "browser_action": {
+      //"default_icon": "images/icon.gif",
+      "default_popup": "popup.html"
+   },
+   "options_ui": {"page": "options.html" },
+   "manifest_version": 2,
+   "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
+   "name": "Easy DNS lookup",
+   "permissions": [
+     "storage"
+   ],
+   "browser_specific_settings": {
+     "gecko": {
+       "id": "dns@wesinator.github.io"
+     }
+   },
+   "version": "0.1"
+}
