@@ -30,7 +30,7 @@ function sendQuery(dns_server)
             }
             // Check if the response is in JSON format
             if (response.headers.get("Content-Type")
-                .includes("application/dns-json")) {
+                .includes("json")) {
                   console.log("response: ", response.json());
                   return response.json();
             } else {
