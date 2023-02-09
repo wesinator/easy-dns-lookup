@@ -1,7 +1,7 @@
 function sendQuery() {
-    var dns_base_url = chrome.storage.local.get("dns_url") || "https://cloudflare-dns.com/dns-query";
+    var dns_base_url = browser.storage.local.get("dns_url") || "https://cloudflare-dns.com/dns-query";
     console.log("using DNS server ", dns_base_url);
-    var dns_query_url = dns_base_url + `?name=${document.getElementbyId("dns-query").text}&type=${document.getElementById(dns-query-type).text}`;
+    var dns_query_url = dns_base_url + `?name=${document.getElementById("dns-query").text}&type=${document.getElementById("dns-query-type").text}`;
     
     fetch(dns_query_url, {
       headers: {
@@ -31,3 +31,8 @@ function sendQuery() {
            console.log(`Error with fetch(): ${error.message}`)
         });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var clickyButton = document.querySelector('#send-query');
+  clickyButton.addEventListener('click', sendQuery);
+});

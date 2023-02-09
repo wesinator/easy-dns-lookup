@@ -42,10 +42,10 @@
       <option value="TLSA">TLSA</option>
       <option value="WKS">WKS</option>
     </select>
-    <input type="text" name="dns-lookup" id="dns-query" placeholder="Enter host name to lookup">
+    <input type="text" name="dns-lookup" id="dns-query" placeholder="Enter host name to lookup" required>
     
     <br>
-    <button onclick="sendQuery()">Send Query to DNS Server</button> 
+    <button id="send-query">Send Query to DNS Server</button> 
     <br>
     
     <div id='result' style="width:500px">
