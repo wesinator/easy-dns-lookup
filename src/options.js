@@ -1,7 +1,7 @@
+var dns_query_url = "https://cloudflare-dns.com/dns-query";
+
 function saveOptions(e) {
   e.preventDefault();
-  
-  var dns_query_url = "https://cloudflare-dns.com/dns-query";
   
   // table mapping dns server options to server URLs
   switch(document.querySelector("#dns-server-select").value) {
@@ -29,7 +29,7 @@ function saveOptions(e) {
 function restoreOptions() {
 
   function setCurrentChoice(result) {
-    document.querySelector("#dns-server-custom").value = result.dns_url;
+    document.querySelector("#dns-server-custom").value = (result.dns_url || dns_query_url);
   }
 
   function onError(error) {
