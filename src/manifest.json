@@ -1,19 +1,24 @@
 {
-   "browser_action": {
-      //"default_icon": "images/icon.gif",
-      "default_popup": "popup.html"
-   },
-   "options_ui": {"page": "options.html" },
-   "manifest_version": 2,
-   "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
-   "name": "Easy DNS lookup",
-   "permissions": [
-     "storage"
-   ],
-   "browser_specific_settings": {
-     "gecko": {
-       "id": "dns@wesinator.github.io"
-     }
-   },
-   "version": "0.1"
+  "options_ui": {"page": "options.html" },
+  "manifest_version": 2,
+  "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
+  "name": "Easy DNS lookup",
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+    "id": "dns@wesinator.github.io"
+    }
+  },
+  "icons": {
+    "16": "assets/network-workgroup_16x16.png",
+    "32": "assets/network-workgroup_32.png",
+    "48": "assets/network-workgroup_48.png",
+    "96": "assets/network-workgroup_96.png"
+  },
+  "version": "0.1"
 }
