@@ -5,9 +5,9 @@ function loadQuery() {
         // https://stackoverflow.com/questions/29516390/how-can-i-access-the-value-of-a-promise
         function (result) {
             dns_base_url = result.dns_url || dns_base_url;
-            sendQuery(dns_base_url);
+            return sendQuery(dns_base_url);
         }).catch(function (error) {
-            sendQuery(dns_base_url);
+            return sendQuery(dns_base_url);
         });
 
 function sendQuery(dns_server)
