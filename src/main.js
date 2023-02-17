@@ -4,7 +4,6 @@ function loadQuery() {
     dns_base_url = browser.storage.local.get("dns_url").then(
         // https://stackoverflow.com/questions/29516390/how-can-i-access-the-value-of-a-promise
         function (result) {
-            console.log("result is:", result);
             dns_base_url = result.dns_url || dns_base_url;
             sendQuery(dns_base_url);
         }).catch(function (error) {
@@ -31,8 +30,24 @@ function sendQuery(dns_server)
             // Check if the response is in JSON format
             if (response.headers.get("Content-Type")
                 .includes("json")) {
-                  console.log("response: ", response.json());
-                  return response.json();
+                  response.json().then(
+                      function processResponse(result) {
+                          console.log(result);
+                          var resultStr = "";
+                          if (result.Answer) {
+                              for (var answer of result.Answer) {
+                                  resultStr = resultStr + `${answer.name.toString()}, ${answer.data.toString()}\n`;
+                              }
+                          }
+                          
+                          document.getElementById("result").innerText = resultStr;
+                          //chrome.browserAction.openPopup()
+                          return result;
+                      }).catch(function (error) {
+                          console.log("error processing result:", error);
+                          return 1
+                      })
+                  //console.log("response: ", responseData);      
             } else {
                 throw new Error("Unexpected Content-Type");
             }
