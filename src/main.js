@@ -41,21 +41,15 @@ function sendQuery(dns_server)
                           }
                           
                           document.getElementById("result").innerText = resultStr;
-                          //chrome.browserAction.openPopup()
                           return result;
                       }).catch(function (error) {
                           console.log("error processing result:", error);
                           return 1
                       })
-                  //console.log("response: ", responseData);      
             } else {
                 throw new Error("Unexpected Content-Type");
             }
         })
-        /*
-        .then((data) => {
-          // process json here
-        })*/
         .catch((error) => {
            console.log(`Error with fetch(): ${error.message}`)
         });
