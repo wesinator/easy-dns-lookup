@@ -1,6 +1,8 @@
 # Easy DNS
 
-A browser addon to do DNS lookups in the browser.
+A web browser addon to do DNS lookups in the browser.
+
+Available for Firefox here: https://addons.mozilla.org/firefox/addon/easy-dns-lookup/
 
 #### Notes and known issues:
  - Some DNS-over-HTTPS servers don't have an [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigin) response header, preventing the response from loading.
