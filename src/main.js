@@ -10,11 +10,11 @@ function loadQuery() {
             return sendQuery(dns_base_url);
         });
 
-function sendQuery(dns_server)
+function sendQuery(dns_server_url)
 {
-    console.log("using DNS server ", dns_base_url);
+    console.log("using DNS server ", dns_server_url);
 
-    var dns_query_url = dns_base_url + `?name=${document.getElementById("dns-query").value}&type=${document.getElementById("dns-query-type").value}`;
+    var dns_query_url = dns_server_url + `?name=${document.getElementById("dns-query").value}&type=${document.getElementById("dns-query-type").value}`;
 
     fetch(dns_query_url, {
       headers: {
