@@ -1,14 +1,14 @@
 function loadQuery() {
     var dns_base_url = "https://cloudflare-dns.com/dns-query";
-    
-    dns_base_url = browser.storage.local.get("dns_url").then(
+
+    browser.storage.local.get("dns_url").then(
         // https://stackoverflow.com/questions/29516390/how-can-i-access-the-value-of-a-promise
         function (result) {
             dns_base_url = result.dns_url || dns_base_url;
             return sendQuery(dns_base_url);
-        }).catch(function (error) {
-            return sendQuery(dns_base_url);
-        });
+    }).catch(function (error) {
+        return sendQuery(dns_base_url);
+    });
 
 function sendQuery(dns_server_url)
 {
