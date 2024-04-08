@@ -4,6 +4,8 @@
 <style>
 div.container {
     width: 100%;
+    font-family: sans-serif;
+    text-align: center;
 }
 
 header {
@@ -11,14 +13,13 @@ header {
     color: #468847;
     background-color: #dff0d8;
     clear: left;
-    text-align: center;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
 }
-   
+
 form {
     margin: 0 auto;
     width: 400px;
@@ -27,12 +28,11 @@ form {
 }
 
 input {
-	width: 350px;
+    width: 300px;
 }
 
 button {
-	width: 200px;
-	margin-left: 140px;
+    width: 200px;
 }
 
 </style>
@@ -47,7 +47,7 @@ button {
 
 <form>
   <span>
-	  <label for="dns-server-select">DNS (DoH) server: </label>
+      <label for="dns-server-select">DNS (DoH) server: </label>
 
       <select name="dns-servers" id="dns-server-select">
         <option value="">--Choose a DNS DoH server or enter your own--</option>
@@ -56,8 +56,8 @@ button {
         <option value="google">Google</option>
         <option value="quad9">Quad9</option>
       </select>
-	  
-	  <input type="text" name="dns-server" id="dns-server-custom" placeholder="Enter a custom DNS server URL">
+
+      <input type="text" name="dns-server" id="dns-server-custom" placeholder="Enter a custom DNS server URL">
   </span>
   <br>
   <br>
