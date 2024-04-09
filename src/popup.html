@@ -4,9 +4,11 @@
   </head>
   <body>
     <select name="dns-querytype" id="dns-query-type">
-     <!--Query type list courtesy of Google: https://dns.google/query
-     more common record types first, then full list as of 2023-02
-     -->
+    <!--Query type list courtesy of Google: https://dns.google/query
+     more common record types first, then full list
+
+     document.getElementById("rr_types").childNodes 
+    -->
       <option value="A">A (default IPv4)</option>
       <option value="AAAA">AAAA (IPv6)</option>
       <option value="CNAME">CNAME</option>
@@ -17,6 +19,7 @@
       <option value="RRSIG">RRSIG</option>
       
       <option value="CAA">CAA</option>
+      <option value="CDNSKEY">CDNSKEY</option>
       <option value="CDS">CDS</option>
       <option value="CERT">CERT</option>
       <option value="DNAME">DNAME</option>
