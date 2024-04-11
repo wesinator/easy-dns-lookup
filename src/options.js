@@ -6,32 +6,18 @@ function clearCustomURL() {
 
 function saveOptions(e) {
   e.preventDefault();
-  
-  // table mapping dns server options to server URLs
-  switch(document.querySelector("#dns-server-select").value) {
-    case "cloudflare-default":
-      clearCustomURL();
-      break;
-    case "cleanbrowsing-adult":
-      clearCustomURL();
-      dns_query_url = "https://doh.cleanbrowsing.org/doh/adult-filter/";
-      break;
-    case "google":
-      clearCustomURL();
-      // special case with Google: API endpoint, not RFC8484 endpoint
-      dns_query_url = "https://dns.google/resolve";
-      break;
-    case "quad9":
-      clearCustomURL();
-      dns_query_url = "https://dns.quad9.net/dns-query";
-      break;
-    default:
-      break;
-  }
-  
+
+  dns_query_url = document.querySelector("#dns-server-select").value;
+  if (dns_query_url)
+    clearCustomURL()
+
+  //console.log("DNS query url selected:", dns_query_url);
   browser.storage.local.set({
     dns_url: document.querySelector("#dns-server-custom").value || dns_query_url
   });
+  
+  // set url field to current url after storing the change in local storage
+  document.querySelector("#dns-server-custom").value = dns_query_url;
 }
 
 function restoreOptions() {
