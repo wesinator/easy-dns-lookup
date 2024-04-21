@@ -1,12 +1,11 @@
 # Easy DNS
 
-A web browser addon to do DNS lookups in the browser.
+A web browser addon to do quick DNS lookups and output raw results.
 
 [![Firefox link](https://img.shields.io/amo/v/easy-dns-lookup.svg)](https://addons.mozilla.org/addon/easy-dns-lookup/)
 
 #### Notes and known issues:
- - Some DNS-over-HTTPS servers don't have an [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigin) response header, preventing the response from loading.
- - The Google DNS option uses Google's `/resolve` endpoint, which may have slightly different formatting than other servers.
+ - Only supports Google and Cloudflare resolvers, or other resolvers that use the Google [DNS JSON API](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/)
 
 License: LGPL-3.0
 
