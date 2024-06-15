@@ -1,3 +1,26 @@
+// load DNS rtypes from json into the select menu in the addon popup
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+readTextFile("./dns-rtypes.json", function(text){
+    console.log("Text:", text)
+    var options = JSON.parse(text);
+    console.log(options);
+      for (i in options) {
+        document.getElementById("dns-query-type").insertAdjacentHTML('beforeend', `<option value="${options[i].value}">${options[i].name}</option>`);
+      }
+});
+
+
 function loadQuery() {
     var dns_base_url = "https://cloudflare-dns.com/dns-query";
     
@@ -39,7 +62,8 @@ function sendQuery(dns_server_url)
                           var resultStr = "";
                           if (result.Answer) {
                               for (var answer of result.Answer) {
-                                  resultStr = resultStr + `${answer.name.toString()}, ${answer.data.toString()}\n`;
+                                  var dataFmt = `${answer.name.toString()}, ${answer.data.toString()}`;
+                                  resultStr = resultStr + `${dataFmt}\n`;
                               }
                           }
                           
