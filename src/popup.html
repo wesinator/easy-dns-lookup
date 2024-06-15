@@ -17,7 +17,7 @@
     }
   </style>
   <body>
-    <select name="dns-querytype" id="dns-query-type">
+    <select id="dns-query-type">
     <!--Query type list courtesy of Google: https://dns.google/query
      more common record types first, then full list
 
@@ -58,7 +58,7 @@
       <option value="TLSA">TLSA</option>
       <option value="WKS">WKS</option>
     </select>
-    <input type="text" name="dns-lookup" id="dns-query" placeholder="Enter host name to lookup" required>
+    <input type="text" id="dns-query" placeholder="Enter host name to lookup" required>
     
     <br>
     <button id="send-query">Send Query to DNS Server</button> 
