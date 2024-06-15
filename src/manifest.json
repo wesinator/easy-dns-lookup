@@ -1,12 +1,12 @@
 {
   "options_ui": {"page": "options.html" },
-  "manifest_version": 3,
+  "manifest_version": 2,
   "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
   "name": "Easy DNS lookup",
   "permissions": [
     "storage"
   ],
-  "action": {
+  "browser_action": {
     "default_popup": "popup.html"
   },
   "browser_specific_settings": {
