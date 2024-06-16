@@ -12,9 +12,9 @@ function readTextFile(file, callback) {
 }
 
 readTextFile("./dns-rtypes.json", function(text){
-    console.log("Text:", text)
+    //console.log("Text:", text)
     var options = JSON.parse(text);
-    console.log(options);
+    //console.log(options);
       for (i in options) {
         document.getElementById("dns-query-type").insertAdjacentHTML('beforeend', `<option value="${options[i].value}">${options[i].name}</option>`);
       }
