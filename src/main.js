@@ -16,7 +16,8 @@ readTextFile("./dns-rtypes.json", function(text){
     var options = JSON.parse(text);
     //console.log(options);
       for (i in options) {
-        document.getElementById("dns-query-type").insertAdjacentHTML('beforeend', `<option value="${options[i].value}">${options[i].name}</option>`);
+        rtype = options[i].value;
+        document.getElementById("dns-query-type").insertAdjacentHTML('beforeend', `<option value="${rtype}">${options[i].name || rtype}</option>`);
       }
 });
 
