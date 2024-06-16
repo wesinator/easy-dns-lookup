@@ -62,9 +62,22 @@ function sendQuery(dns_server_url)
                           console.log(result);
                           var resultStr = "";
                           if (result.Answer) {
-                              for (var answer of result.Answer) {
+                              for (answer of result.Answer) {
                                   var dataFmt = `${answer.name.toString()}, ${answer.data.toString()}`;
                                   resultStr = resultStr + `${dataFmt}\n`;
+                              }
+                          }
+
+                          /* This handles cases where response has no answer but a
+                             OPT (RFC6891) message. This includes RFC8914 errors
+                             https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/
+
+                             The DNS APIs return these messages in the `Comment` field array
+                          */
+                          else if (result.Comment) {
+                              resultStr = "Server responded with a comment:\n";
+                              for (item of result.Comment) {
+                                  resultStr = resultStr + `${item}\n`;
                               }
                           }
                           
