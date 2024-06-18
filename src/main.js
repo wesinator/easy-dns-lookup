@@ -71,7 +71,7 @@ async function processQuery() {
 
                         // add comments at end. Google server provides comments on certain queries
                         if (result.Comment)
-                            resultStr = resultStr + `\n\nComment:\n${result.Comment}`;
+                            resultStr = resultStr + `\nComment:\n${result.Comment}`;
                     }
 
                     /* This handles cases where response has no answer but a
