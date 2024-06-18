@@ -66,6 +66,12 @@ async function processQuery() {
                     if (result.Answer) {
                         for (answer of result.Answer) {
                             var dataFmt = `${answer.name.toString()}, ${answer.data.toString()}`;
+                            
+                            // label/prefix a CNAME type response
+                            //if (answer.type == 5) {
+                                //resultStr = resultStr + "CNAME record: "
+                            //}
+
                             resultStr = resultStr + `${dataFmt}\n`;
                         }
 
