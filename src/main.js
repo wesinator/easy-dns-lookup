@@ -74,10 +74,6 @@ async function processQuery() {
 
                             resultStr = resultStr + `${dataFmt}\n`;
                         }
-
-                        // add comments at end. Google server provides comments on certain queries
-                        if (result.Comment)
-                            resultStr = resultStr + `\nComment:\n${result.Comment}`;
                     }
 
                     /* handle case where SOA is in Authority field
@@ -89,16 +85,18 @@ async function processQuery() {
                         }
                     }
 
-                    /* This handles cases where response has no answer but a
-                       OPT (RFC6891) message. This includes RFC8914 errors
+                    /* 
+                       add comments at end. Google server provides comments on certain queries
+
+                       This also handles cases where response has no answer but an OPT (RFC6891) message. 
+                       This includes RFC8914 errors
                        https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/
                 
                        Cloudflare returns the comment in an array, Google in a string.
                        Google has a separated extended_dns_errors field with the specific error messages
                     */
-                    else if (result.Comment) {
-                        resultStr = `Server responded with a comment:\n${result.Comment}\n`;
-                    }
+                    if (result.Comment)
+                        resultStr = resultStr + `\nComment:\n${result.Comment}`;
 
                     document.getElementById("result").innerText = resultStr;
 
