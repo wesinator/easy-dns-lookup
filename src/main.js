@@ -60,7 +60,7 @@ async function processQuery() {
             .includes("json")) {
               response.json().then(
                   function (result) {
-                    console.log(result);
+                    console.log(query_name, query_type, result);
                     var resultStr = "";
 
                     if (result.Answer) {
