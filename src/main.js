@@ -80,6 +80,15 @@ async function processQuery() {
                             resultStr = resultStr + `\nComment:\n${result.Comment}`;
                     }
 
+                    /* handle case where SOA is in Authority field
+                       This happens when there is a CNAME record, or on certain sites like www.google.com
+                    */
+                    if (result.Question[0].type == 6 && result.Authority) {
+                        for (item of result.Authority) {
+                            resultStr = resultStr + `${item.name.toString()}, ${item.data.toString()}\n`;
+                        }
+                    }
+
                     /* This handles cases where response has no answer but a
                        OPT (RFC6891) message. This includes RFC8914 errors
                        https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/
