@@ -74,13 +74,11 @@ async function processQuery() {
                        OPT (RFC6891) message. This includes RFC8914 errors
                        https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/
                 
-                       The DNS APIs return these messages in the `Comment` field array
+                       Cloudflare returns the comment in an array, Google in a string.
+                       Google has a separated extended_dns_errors field with the specific error messages
                     */
                     else if (result.Comment) {
-                        resultStr = "Server responded with a comment:\n";
-                        for (item of result.Comment) {
-                            resultStr = resultStr + `${item}\n`;
-                        }
+                        resultStr = `Server responded with a comment:\n${result.Comment}\n`;
                     }
 
                     document.getElementById("result").innerText = resultStr;
