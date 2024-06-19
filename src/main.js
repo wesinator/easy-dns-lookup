@@ -77,7 +77,7 @@ async function processQuery() {
                     /* handle case where SOA is in Authority field
                        This happens when there is a CNAME record, or on certain sites like www.google.com
                     */
-                    if (result.Question[0].type == 6 && result.Authority) {
+                    if ((result.Question[0].type == 6 || result.Question[0].type == 2) && result.Authority) {
                         resultStr = formatResultData(resultStr, result.Authority);
                     }
 
