@@ -29,9 +29,16 @@ async function DnsAPIQuery(dns_api_url, query_hostname, query_type)
       headers: {
         'Accept': 'application/dns-json'
       }
-      
     });
     return response;
+}
+
+function formatResultData(baseString, resultIter) {
+    for (var item of resultIter) {
+        var dataFmt = `${item.name.toString()}, ${item.data.toString()}\n`;
+        baseString = baseString + dataFmt;
+    }
+    return baseString;
 }
 
 async function processQuery() {
@@ -64,25 +71,14 @@ async function processQuery() {
                     var resultStr = "";
 
                     if (result.Answer) {
-                        for (answer of result.Answer) {
-                            var dataFmt = `${answer.name.toString()}, ${answer.data.toString()}`;
-                            
-                            // label/prefix a CNAME type response
-                            //if (answer.type == 5) {
-                                //resultStr = resultStr + "CNAME record: "
-                            //}
-
-                            resultStr = resultStr + `${dataFmt}\n`;
-                        }
+                        resultStr = formatResultData(resultStr, result.Answer);
                     }
 
                     /* handle case where SOA is in Authority field
                        This happens when there is a CNAME record, or on certain sites like www.google.com
                     */
                     if (result.Question[0].type == 6 && result.Authority) {
-                        for (item of result.Authority) {
-                            resultStr = resultStr + `${item.name.toString()}, ${item.data.toString()}\n`;
-                        }
+                        resultStr = formatResultData(resultStr, result.Authority);
                     }
 
                     /* 
