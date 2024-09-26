@@ -1,11 +1,13 @@
 {
-  "options_ui": {"page": "options.html" },
+  "options_ui": {"page": "options.html"},
   "manifest_version": 2,
   "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
   "name": "Easy DNS lookup",
   "permissions": [
-    "storage"
+    "storage",
+    "contextMenus"
   ],
+  "background": {"scripts": ["contextMenu.js"]},
   "browser_action": {
     "default_popup": "popup.html"
   },
@@ -20,5 +22,5 @@
     "48": "assets/network-workgroup_48.png",
     "96": "assets/network-workgroup_96.png"
   },
-  "version": "0.5.1"
+  "version": "0.6.0"
 }
