@@ -5,7 +5,8 @@
   "name": "Easy DNS lookup",
   "permissions": [
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "https://dns.nextdns.io/"
   ],
   "background": {"scripts": ["contextMenu.js"]},
   "browser_action": {
@@ -22,5 +23,5 @@
     "48": "assets/network-workgroup_48.png",
     "96": "assets/network-workgroup_96.png"
   },
-  "version": "0.8"
+  "version": "0.8.1"
 }
