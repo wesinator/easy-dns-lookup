@@ -35,7 +35,12 @@ async function DnsAPIQuery(dns_api_url, query_hostname, query_type)
 
 function formatResultData(baseString, resultIter) {
     for (var item of resultIter) {
-        var dataFmt = `${item.name.toString()}, ${item.data.toString()}\n`;
+    	// normalize name items that end in a '.'. Google and other services keep the dot. 
+    	// Cloudflare does not have a trailing dot in the A response
+    	var name = item.name;
+    	if (name.endsWith('.'))
+    		name = name.substr(0, name.length -1)
+        var dataFmt = `${name.toString()}, ${item.data.toString()}\n`;
         baseString = baseString + dataFmt;
     }
     return baseString;
