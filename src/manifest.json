@@ -3,6 +3,14 @@
   "manifest_version": 2,
   "description": "Utility to do DNS lookups and display the response, using HTTPS DNS servers.",
   "name": "Easy DNS lookup",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dns@wesinator.github.io",
+      "data_collection_permissions": {
+        "required": ["none"] // implicit consent for browsingActivity
+      }
+    }
+  },
   "permissions": [
     "storage",
     "contextMenus",
@@ -11,11 +19,6 @@
   "background": {"scripts": ["contextMenu.js"]},
   "browser_action": {
     "default_popup": "popup.html"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "dns@wesinator.github.io"
-    }
   },
   "icons": {
     "16": "assets/network-workgroup_16x16.png",
